@@ -1,2 +1,2 @@
-# weather-app
-JavaScript Weather App 
+# webpack-config
+Webpack dev environment 
