@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const historyApiFallback = require("connect-history-api-fallback");
 const loader = require("sass-loader");
+const { type } = require("os");
 
 module.exports = {
   mode: "development",
@@ -12,6 +13,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
     clean: true,
+    assetModuleFilename: "[name] [ext]"
   },
   devtool: "source-map",
   devServer: {
@@ -39,6 +41,10 @@ module.exports = {
             presets: ["@babel/preset-env"],
           },
         },
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },
