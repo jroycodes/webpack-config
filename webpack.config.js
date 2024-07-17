@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const historyApiFallback = require("connect-history-api-fallback");
+const loader = require("sass-loader");
 
 module.exports = {
   mode: "development",
@@ -28,6 +29,16 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
     ],
   },
